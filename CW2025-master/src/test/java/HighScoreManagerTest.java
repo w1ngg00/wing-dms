@@ -31,7 +31,7 @@ public class HighScoreManagerTest {
 
     /**
      * Executes cleanup after every test method.
-     * Deletes the high score files created during the test to ensure a clean state for the next test.
+     * Deletes the high score files created during the test to ensure a clean state for the next test
      */
     @BeforeEach
     @AfterEach
