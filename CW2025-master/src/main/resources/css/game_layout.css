@@ -78,10 +78,9 @@
 }
 
 /* In-game background image — place src/main/resources/images/bg_game.png */
-.root, .game-layout {
+.root {
     -fx-background-image: url("../images/bg_game.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-background-size: 100% 100%;
-    -fx-background-color: transparent;
 }

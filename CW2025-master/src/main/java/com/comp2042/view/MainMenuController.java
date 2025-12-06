@@ -71,13 +71,13 @@ public class MainMenuController implements Initializable {
     }
 
     // Call to start the looping main menu soundtrack (expects resource /sounds/bg_main_menu.mp3)
-    private void startMenuMusic() {
+    public void startMenuMusic() {
         try {
             String musicUrl = getClass().getResource("/sounds/bg_main_menu.mp3").toExternalForm();
             Media media = new Media(musicUrl);
             menuMusicPlayer = new MediaPlayer(media);
             menuMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            menuMusicPlayer.setVolume(0.1); // lowered from 0.5 to 0.1
+            menuMusicPlayer.setVolume(0.1);
             menuMusicPlayer.play();
         } catch (Exception e) {
             System.err.println("Main menu music not started: " + e.getMessage());
@@ -114,6 +114,7 @@ public class MainMenuController implements Initializable {
     // Easy mode
     @FXML
     void onEasyClicked(ActionEvent e) {
+        stopMenuMusic();
         // create Main class with easy mode
         mainApp.showGameScreen(Difficulty.EASY);
     }
@@ -127,6 +128,7 @@ public class MainMenuController implements Initializable {
     // Normal mode
     @FXML
     void onNormalClicked(ActionEvent e) {
+        stopMenuMusic();
         // create Main class with normal mode
         mainApp.showGameScreen(Difficulty.NORMAL);
     }
@@ -140,6 +142,7 @@ public class MainMenuController implements Initializable {
     // Hard mode
     @FXML
     void onHardClicked(ActionEvent e) {
+        stopMenuMusic();
         // create Main class with hard mode
         mainApp.showGameScreen(Difficulty.HARD);
     }

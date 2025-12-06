@@ -1,12 +1,15 @@
 package com.comp2042.view;
 
 import javafx.animation.FadeTransition;
+import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * A custom JavaFX component that displays the "GAME OVER" message
@@ -23,6 +26,8 @@ public class GameOverPanel extends StackPane {
      * "Main Menu" button is clicked. This is typically set by the GuiController.
      */
     private Runnable onMainMenu;    // field to save action
+
+    private MediaPlayer gameMusic;
 
     /**
      * Constructs the GameOverPanel.
@@ -82,5 +87,34 @@ public class GameOverPanel extends StackPane {
         fade.setFromValue(0);
         fade.setToValue(1);
         fade.play();
+    }
+
+    public void initialize() {
+        startGameMusic();
+    }
+
+    public void startGameMusic() {
+        try {
+            String musicUrl = getClass().getResource("/sounds/bg_game.mp3").toExternalForm();
+            Media media = new Media(musicUrl);
+            gameMusic = new MediaPlayer(media);
+            gameMusic.setCycleCount(MediaPlayer.INDEFINITE);
+            gameMusic.setVolume(0.3);
+            gameMusic.play();
+        } catch (Exception e) {
+            System.err.println("Game music not started: " + e.getMessage());
+        }
+    }
+
+    public void stopGameMusic() {
+        if (gameMusic != null) {
+            gameMusic.stop();
+            gameMusic.dispose();
+            gameMusic = null;
+        }
+    }
+
+    public MediaPlayer getGameMusic() {
+        return gameMusic;
     }
 }
