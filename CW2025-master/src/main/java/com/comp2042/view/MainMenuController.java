@@ -77,7 +77,7 @@ public class MainMenuController implements Initializable {
             Media media = new Media(musicUrl);
             menuMusicPlayer = new MediaPlayer(media);
             menuMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-            menuMusicPlayer.setVolume(0.3); // lowered from 0.5 to 0.3
+            menuMusicPlayer.setVolume(0.1); // lowered from 0.5 to 0.1
             menuMusicPlayer.play();
         } catch (Exception e) {
             System.err.println("Main menu music not started: " + e.getMessage());
