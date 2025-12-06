@@ -1,23 +1,32 @@
-/* * menu.css
- * メインメニュー、難易度選択画面用
- */
-
+/* Menu Title */
 .menu-title {
     -fx-font-family: "Let's go Digital";
     -fx-font-size: 48px;
     -fx-text-fill: yellow;
-    /* 影をつけて視認性を向上 */
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.7), 5, 0, 0, 2);
 }
 
+/* Menu Label */
 .menu-label {
     -fx-font-family: "Let's go Digital";
     -fx-font-size: 24px;
     -fx-text-fill: white;
 }
-
-/* メニュー画面内の特定のボタン調整 */
+/* Menu Background Buttons */
 .menu-background .button {
-     -fx-font-family: "Let's go Digital";
-     -fx-font-size: 18px;
- }
+    -fx-font-family: "Let's go Digital";
+    -fx-font-size: 18px;
+}
+
+/* Main Menu Background */
+.root, .main-menu {
+    -fx-background-image: url("../images/bg_main_menu.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 100% 100%;
+    -fx-background-color: transparent;
+}
+/* Button Hover Effect */
+.button:hover {
+    -fx-cursor: hand;
+}

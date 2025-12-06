@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,6 +31,9 @@ public class MainMenuController implements Initializable {
     /** The FXML {@link Button} for the unlockable "Extra Hard" mode. */
     @FXML
     private Button extraHardButton;
+
+    // MediaPlayer for main menu music
+    private MediaPlayer menuMusicPlayer;
 
     /**
      * Constructs the MainMenuController instance.
@@ -62,7 +67,30 @@ public class MainMenuController implements Initializable {
             extraHardButton.setVisible(true);
         }
 
+        startMenuMusic();
+    }
 
+    // Call to start the looping main menu soundtrack (expects resource /sounds/bg_main_menu.mp3)
+    private void startMenuMusic() {
+        try {
+            String musicUrl = getClass().getResource("/sounds/bg_main_menu.mp3").toExternalForm();
+            Media media = new Media(musicUrl);
+            menuMusicPlayer = new MediaPlayer(media);
+            menuMusicPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+            menuMusicPlayer.setVolume(0.3); // lowered from 0.5 to 0.3
+            menuMusicPlayer.play();
+        } catch (Exception e) {
+            System.err.println("Main menu music not started: " + e.getMessage());
+        }
+    }
+
+    // Call this when leaving the main menu to stop and release resources
+    public void stopMenuMusic() {
+        if (menuMusicPlayer != null) {
+            menuMusicPlayer.stop();
+            menuMusicPlayer.dispose();
+            menuMusicPlayer = null;
+        }
     }
 
     /**

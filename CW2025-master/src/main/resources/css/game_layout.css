@@ -1,15 +1,9 @@
-/* * game.css
- * ゲームプレイ画面 (game_layout.fxml) 専用
- */
-
-/* ゲームボード */
 .gameBoard {
     -fx-border-color: linear-gradient(#2A5058, #61a2b1);
     -fx-border-width: 12px;
     -fx-border-radius: 12px;
 }
 
-/* 次のブロック表示エリア */
 .next-brick-container {
     -fx-border-style: solid;
     -fx-border-width: 2px;
@@ -26,7 +20,6 @@
     -fx-text-fill: white;
 }
 
-/* 以前のクラス定義も念のため維持（もし使用しているなら） */
 .nextBrick {
     -fx-border-width: 2px;
     -fx-border-color: whitesmoke;
@@ -40,15 +33,13 @@
     -fx-text-fill: yellow;
 }
 
-/* ブロック自体のスタイル */
 .rectangleStyle {
     -fx-fill: linear-gradient(from 41px 34px to 50px 50px, reflect, #ff7f50 30%, #faebd7 47%);
 }
 
-/* スコア・ボーナス表示 */
 .scoreClass {
     -fx-font-family: "Let's go Digital";
-    -fx-font-size: 38;
+    -fx-font-size: 38px;
     -fx-fill: yellow;
     -fx-text-fill: yellow;
 }
@@ -70,7 +61,6 @@
     -fx-font-weight: bold;
 }
 
-/* ゲームオーバー画面 */
 .game-over-panel {
     -fx-background-color: rgba(0, 0, 0, 0.7);
     -fx-background-radius: 10;
@@ -82,7 +72,16 @@
 
 .gameOverStyle {
     -fx-font-family: "Let's go Digital";
-    -fx-font-size: 48;
-    -fx-background-color: red; /* 必要に応じて調整 */
-    -fx-text-fill: white; /* 文字色を追加 */
+    -fx-font-size: 48px;
+    -fx-background-color: red;
+    -fx-text-fill: white;
+}
+
+/* In-game background image — place src/main/resources/images/bg_game.png */
+.root, .game-layout {
+    -fx-background-image: url("../images/bg_game.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-size: 100% 100%;
+    -fx-background-color: transparent;
 }
