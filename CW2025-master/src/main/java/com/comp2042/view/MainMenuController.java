@@ -84,7 +84,7 @@ public class MainMenuController implements Initializable {
         }
     }
 
-    // Call this when leaving the main menu to stop and release resources
+    // Call this when leaving the main menu to stop and release resource
     public void stopMenuMusic() {
         if (menuMusicPlayer != null) {
             menuMusicPlayer.stop();

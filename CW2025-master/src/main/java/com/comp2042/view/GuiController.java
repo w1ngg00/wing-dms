@@ -176,6 +176,8 @@ public class GuiController implements Initializable {
         if (mainMenuController != null) {
             mainMenuController.startMenuMusic();
         }
+        // Keep fullscreen when showing menu
+        mainApp.showMainMenuScreen();
     }
 
     public void setupSoundPlayers(MediaPlayer clearRowSoundPlayer, MediaPlayer speedUpSoundPlayer) {
@@ -537,6 +539,7 @@ public class GuiController implements Initializable {
             if (mainMenuController != null) {
                 mainMenuController.startMenuMusic();
             }
+            // Keep fullscreen when showing menu
             mainApp.showMainMenuScreen();
         } else {
             eventListener.resumeGame();
@@ -593,3 +596,4 @@ public class GuiController implements Initializable {
         groupNotification.setLayoutY(gamePanel.getLayoutY());
     }
 }
+ // test test

@@ -68,9 +68,10 @@ public class Main extends Application {
             MainMenuController controller = fxmlLoader.getController();
             controller.setMainApp(this);
 
-            // Use fullscreen dimensions - no fixed size needed
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setFullScreen(true); // Keep fullscreen
+            primaryStage.setFullScreenExitHint("");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -87,9 +88,7 @@ public class Main extends Application {
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
-
-            // Ensure the primary stage remains fullscreen when switching to the game scene
-            primaryStage.setFullScreen(true);
+            primaryStage.setFullScreen(true); // Keep fullscreen
             primaryStage.setFullScreenExitHint("");
             primaryStage.show();
 
@@ -109,6 +108,8 @@ public class Main extends Application {
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
+            primaryStage.setFullScreen(true); // Keep fullscreen
+            primaryStage.setFullScreenExitHint("");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
