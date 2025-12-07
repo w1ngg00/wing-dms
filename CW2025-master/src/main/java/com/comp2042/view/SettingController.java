@@ -170,7 +170,7 @@ public class SettingController implements Initializable {
      */
     public void setupVolumeControls(MediaPlayer clearRowPlayer, MediaPlayer speedUpPlayer) {
         this.clearRowPlayer = clearRowPlayer;
-        this.speedUpPlayer = speedUpPlayer;
+        
         if (clearRowPlayer != null) {
             clearRowVolumeSlider.setValue(this.clearRowPlayer.getVolume() * 100.0);
         }
