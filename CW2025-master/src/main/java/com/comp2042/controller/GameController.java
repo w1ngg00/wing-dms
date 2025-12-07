@@ -153,7 +153,7 @@ public class GameController implements InputEventListener {
     private void startObstacleTimer() {
         obstacleTimeline = new Timeline(new KeyFrame(
                 Duration.millis(GameConfig.EXTRA_TIMER),  // 15s interval
-                _ -> dropRandomObstacle()
+                event -> dropRandomObstacle()
         ));
         obstacleTimeline.setCycleCount(Timeline.INDEFINITE);
         obstacleTimeline.play();
