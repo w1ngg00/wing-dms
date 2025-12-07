@@ -135,7 +135,7 @@ public class GameController implements InputEventListener {
 
         timeLine = new Timeline(new KeyFrame(
                 Duration.millis(this.currentGameSpeed),
-                _ -> {
+                event -> {
                     //onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD));
                     DownData downData = onDownEvent(new MoveEvent(EventType.DOWN, EventSource.THREAD));
                     // Update screen after a down event
