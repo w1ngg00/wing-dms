@@ -4,12 +4,13 @@ import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.util.Duration;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.util.Duration;
+import java.util.List;
 
 /**
  * A custom JavaFX component that displays the "GAME OVER" message
@@ -19,15 +20,11 @@ import javafx.scene.media.MediaPlayer;
  * that should be performed when the "Main Menu" button is clicked.
  */
 // change to VBox to align label and button vertically
-public class GameOverPanel extends StackPane {
-
-    /**
-     * Stores the action (as a {@link Runnable}) to be executed when the
-     * "Main Menu" button is clicked. This is typically set by the GuiController.
-     */
-    private Runnable onMainMenu;    // field to save action
+public class GameOverPanel extends VBox {
 
     private MediaPlayer gameMusic;
+    private MediaPlayer gameOverMusicPlayer;
+    private Runnable mainMenuCallback;
 
     /**
      * Constructs the GameOverPanel.
@@ -36,27 +33,27 @@ public class GameOverPanel extends StackPane {
      * configures the button's click event.
      */
     public GameOverPanel() {
-        final Label gameOverLabel = new Label("GAME OVER");
-        gameOverLabel.getStyleClass().add("gameOverStyle");
+        setStyle("-fx-background-color: rgba(0, 0, 0, 0.9); -fx-border-color: red; -fx-border-width: 5;");
+        setAlignment(Pos.CENTER);
+        setSpacing(30);
+        setPrefWidth(600);
+        setPrefHeight(400);
 
-        final Button mainMenuButton = new Button("Main Menu");
-        mainMenuButton.getStyleClass().add("ipad-dark-grey");
+        // Game Over text
+        Text gameOverText = new Text("GAME OVER");
+        gameOverText.setStyle("-fx-font-family: 'Let\\'s go Digital'; -fx-font-size: 60px; -fx-fill: red;");
 
-        VBox contentBox = new VBox(20);
-        contentBox.setAlignment(Pos.CENTER);
-        contentBox.getChildren().addAll(gameOverLabel, mainMenuButton);
-
-        // Overlay
-        this.getChildren().add(contentBox);
-        this.setAlignment(Pos.CENTER);
-
-        this.getStyleClass().add("game-over-overlay");
-        this.setVisible(false);
-        this.setOpacity(0);
-
-        mainMenuButton.setOnAction(event -> {
-            onMainMenu.run();
+        // Main Menu button
+        Button mainMenuButton = new Button("MAIN MENU");
+        mainMenuButton.setStyle("-fx-font-family: 'Let\\'s go Digital'; -fx-font-size: 24px; -fx-padding: 15px 40px;");
+        mainMenuButton.setOnAction(e -> {
+            stopGameOverMusic();
+            if (mainMenuCallback != null) {
+                mainMenuCallback.run();
+            }
         });
+
+        getChildren().addAll(gameOverText, mainMenuButton);
     }
 
     /**
@@ -64,10 +61,10 @@ public class GameOverPanel extends StackPane {
      * This method is used to pass the navigation logic (e.g., {@code mainApp.showMainMenuScreen()})
      * from the {@link GuiController} into this panel.
      *
-     * @param action The {@link Runnable} to execute on button click.
+     * @param callback The {@link Runnable} to execute on button click.
      */
-    public void setMainMenu(Runnable action) {
-        this.onMainMenu = action;
+    public void setMainMenu(Runnable callback) {
+        this.mainMenuCallback = callback;
     }
 
 
@@ -79,20 +76,30 @@ public class GameOverPanel extends StackPane {
      * Plays a {@link FadeTransition} that changes the opacity from 0.0 (transparent) to 1.0 (opaque) over 1 second.
      */
     public void showWithAnimation() {
-        this.setVisible(true);
-        this.toFront();
-
-        // fade-in animation
-        FadeTransition fade = new FadeTransition(Duration.seconds(1), this);
-        fade.setFromValue(0);
-        fade.setToValue(1);
-        fade.play();
+        setVisible(true);
+        
+        // Stop game music first
+        stopGameMusic();
+        
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(500), this);
+        fadeIn.setFromValue(0);
+        fadeIn.setToValue(1);
+        fadeIn.play();
+        
+        // Play game over music only
+        startGameOverMusic();
     }
 
-    public void initialize() {
-        startGameMusic();
+    // Stop in-game music
+    public void stopGameMusic() {
+        if (gameMusic != null) {
+            gameMusic.stop();
+            gameMusic.dispose();
+            gameMusic = null;
+        }
     }
 
+    // Start in-game music
     public void startGameMusic() {
         try {
             String musicUrl = getClass().getResource("/sounds/bg_game.mp3").toExternalForm();
@@ -106,11 +113,26 @@ public class GameOverPanel extends StackPane {
         }
     }
 
-    public void stopGameMusic() {
-        if (gameMusic != null) {
-            gameMusic.stop();
-            gameMusic.dispose();
-            gameMusic = null;
+    // Start game over music (plays once, no loop)
+    private void startGameOverMusic() {
+        try {
+            String musicUrl = getClass().getResource("/sounds/bg_game_over.mp3").toExternalForm();
+            Media media = new Media(musicUrl);
+            gameOverMusicPlayer = new MediaPlayer(media);
+            gameOverMusicPlayer.setCycleCount(1); // Play once
+            gameOverMusicPlayer.setVolume(0.3);
+            gameOverMusicPlayer.play();
+        } catch (Exception e) {
+            System.err.println("Game over music not started: " + e.getMessage());
+        }
+    }
+
+    // Stop game over music
+    private void stopGameOverMusic() {
+        if (gameOverMusicPlayer != null) {
+            gameOverMusicPlayer.stop();
+            gameOverMusicPlayer.dispose();
+            gameOverMusicPlayer = null;
         }
     }
 

@@ -119,14 +119,16 @@ public class GuiController implements Initializable {
             pauseIconView = new ImageView(pauseImg);
             resumeIconView = new ImageView(resumeImg);
             ImageView restartIconView = new ImageView(restartImg);
-            pauseIconView.setFitWidth(25);
-            resumeIconView.setFitWidth(25);
-            restartIconView.setFitWidth(25);
+            pauseIconView.setFitWidth(80);
+            resumeIconView.setFitWidth(100);
+            restartIconView.setFitWidth(100);
             pauseIconView.setPreserveRatio(true);
             resumeIconView.setPreserveRatio(true);
             restartIconView.setPreserveRatio(true);
             pauseButton.setGraphic(pauseIconView);
+            pauseButton.setText("");  // Remove text
             restartButton.setGraphic(restartIconView);
+            restartButton.setText("");  // Remove text from restart button
         } catch (Exception e) {
             System.err.println("Failed to load icon img: " + e.getMessage());
             pauseButton.setText("Pause");
@@ -137,7 +139,12 @@ public class GuiController implements Initializable {
         gamePanel.requestFocus();
 
         // Setup the game over panel's "Main Menu" button action
-        gameOverPanel.setMainMenu(() -> mainApp.showMainMenuScreen());
+        gameOverPanel.setMainMenu(() -> {
+            if (mainMenuController != null) {
+                mainMenuController.startMenuMusic();
+            }
+            mainApp.showMainMenuScreen();
+        });
         gameOverPanel.setVisible(false);
 
         final Reflection reflection = new Reflection();
@@ -596,4 +603,3 @@ public class GuiController implements Initializable {
         groupNotification.setLayoutY(gamePanel.getLayoutY());
     }
 }
- // test test

@@ -28,7 +28,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
-        primaryStage.setTitle("TetrisJFX");
+        primaryStage.setTitle("Tetris by W1ng00");
 
         // Make it true fullscreen (no window borders, covers entire screen)
         primaryStage.initStyle(StageStyle.UNDECORATED);  // Removes title bar
