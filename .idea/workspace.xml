@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e750dca-8641-470c-bb96-278704b64161" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/wing-dms-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wing-dms-master.iml" afterDir="false" />
-    </list>
+    <list default="true" id="7e750dca-8641-470c-bb96-278704b64161" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -92,7 +90,7 @@
       <option name="presentableId" value="Default" />
       <updated>1765135670442</updated>
       <workItem from="1765135671674" duration="85000" />
-      <workItem from="1765135780337" duration="2874000" />
+      <workItem from="1765135780337" duration="3243000" />
     </task>
     <servers />
   </component>
