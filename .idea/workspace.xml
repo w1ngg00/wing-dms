@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e750dca-8641-470c-bb96-278704b64161" name="Changes" comment="" />
+    <list default="true" id="7e750dca-8641-470c-bb96-278704b64161" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CW2025-master/src/main/java/com/comp2042/controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CW2025-master/src/main/java/com/comp2042/controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/settings.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -43,7 +47,7 @@
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/wingg/Downloads/COMP2042ThamWingLok/wing-dms-master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/wingg/Downloads/wing-dms-master&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -92,6 +96,8 @@
       <workItem from="1765135671674" duration="85000" />
       <workItem from="1765135780337" duration="3371000" />
       <workItem from="1765142585686" duration="8000" />
+      <workItem from="1765145212602" duration="1013000" />
+      <workItem from="1765146331522" duration="1698000" />
     </task>
     <servers />
   </component>

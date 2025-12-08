@@ -467,29 +467,6 @@
 
     **Resolution**: Added `synchronized` keyword to `GameSettings.saveSettings()` method. Implemented atomic write pattern using temporary file + rename (write to `settings.txt.tmp`, then rename to `settings.txt`). Prevents partial file corruption on interruption.
 
-    ---
-
-    ## Testing
-
-    Unit tests are provided in `src/test/java/` for critical game logic:
-
-    - **`GameSettingsTest`**: Validates settings file I/O, keybinding persistence, volume serialization
-    - **`HighScoreManagerTest`**: Validates high score persistence per difficulty, unlock condition logic
-    - **`MatrixOperationsTest`**: Validates grid operations, rotation math, boundary checking
-    - **`SimpleBoardTest`**: Validates board mechanics, collision detection, line clearing, hold feature
-
-    ### Running Tests
-    ```bash
-    mvn test
-    ```
-
-    ### Test Coverage
-    - Settings file I/O: Load, save, corruption recovery
-    - High score persistence: Per-difficulty tracking, unlock conditions
-    - Collision detection: Brick placement, rotation, boundaries
-    - Hold feature: Null safety, once-per-turn enforcement, swap logic
-
-    ---
 
     ## Project Structure
 
@@ -563,7 +540,11 @@
 
     ---
 
-    ## Statistics
+    ## references used
+    - **score system, hard drop and next piece preview** - https://gist.github.com/straker/3c98304f8a6a9174efd8292800891ea1#further-exploration
+    **game controls, line clearing, pause/resume and collision detection** - https://github.com/Hasnatrasool163/Tetris-in-Java
+
+    all are taken for ideas and referencing for guidance as a foundation to be able to improve into a javaclass that aligns with the coursework code
 
     - **Total Java Classes**: 27
     - **New Classes**: 11
@@ -584,3 +565,4 @@
     **Repository**: [https://github.com/w1ngg00/wing-dms](https://github.com/w1ngg00/wing-dms)
 
     ---
+
